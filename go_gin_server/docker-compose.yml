@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16.3
+    container_name: postgres
+    restart: always 
+    environment:
+      POSTGRES_DB: tasks
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminPassword
+    ports:
+      - "5432:5432" # outside port : inside:port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com  
+      PGADMIN_DEFAULT_PASSWORD: adminPassword  
+    ports:
+      - "5050:80"
+
+volumes:
+  postgres_data:
+    driver: local
