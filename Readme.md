@@ -1,3 +1,7 @@
+go mode init <gitHubLink>
+
+
+
 # Go-server
 
 ![alt text](image-1.png)

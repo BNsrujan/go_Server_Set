@@ -1,13 +1,14 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type PostTaskReload struct {
-	Title       string `json:"title" binding:required`
+	Title     string `json:"title" binding:required`
 	Description string `json:"description" binding:required`
 	Status      string `json:"Status binding:required`
 }
@@ -24,12 +25,16 @@ func SaveTask(c *gin.Context) {
 		})
 		return
 	}
-	if payload.Title != "" {
+	if payload.Title == "" {
 		c.JSON(http.StatusOK, gin.H{"error": "Title error"})
-		return 
+		return
 	}
+	fmt.Println(payload)
+	// var id int
 
-	c.JSON(http.StatusOK, gin.H{"error": false, "payload": payload.Title})
+	// quiry := `INSERT into tasks (title,description,status) VALUE ($1,$2,$3)`
+
+	c.JSON(http.StatusOK, gin.H{"error": false, "payload": payload})
 
 	// body, err := c.GetRawData()
 
