@@ -6,13 +6,14 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/BNsrujan/go_Server_Set.git/config"
 	"github.com/jackc/pgx/v5"
 )
 
 var DB *pgx.Conn
 
 func InitDB() {
-	DATABASE_URL := "postgres://postgres:adminPassword@localhost:5432/tasks?sslmode=disable"
+	DATABASE_URL := config.Config.DB_PATH
 	var err error
 	DB, err = pgx.Connect(context.Background(), DATABASE_URL)
 	if err != nil {

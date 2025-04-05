@@ -44,3 +44,8 @@ https://github.com/golang-migrate/migrate
 Handel Router
 Data Validation
 DB Miegration
+
+
+
+ make migrate-create alter_task
+ which will crete  migrations

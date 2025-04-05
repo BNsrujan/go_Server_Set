@@ -18,8 +18,18 @@ func MountRout() *gin.Engine {
 		})
 	})
 
-	handler.POST("/task", handlers.SaveTask)
+	taskRouters := handler.Group("/task")
+	{
+		taskRouters.POST("/k", handlers.SaveTask)
+		// taskRouters.GET("/", handlers.ReadTask)
+		// taskRouters.DELETE("/", handlers.ReadTask)
+	}
 
+	handler.NoRoute(func(ctx *gin.Context) {
+		ctx.JSON(http.StatusNotFound, gin.H{
+			"message": "Router not Found",
+		})
+	})
 	return handler
 
 }
