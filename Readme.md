@@ -186,7 +186,7 @@ Access pgAdmin at: http://localhost:5050
 | Live Reload  | ✅            | ✅         | ❌            |
 | Validation   | ✅            | ❌         | ❌            |
 
-## 🚦 Getting Started with Other Projects
+## Getting Started with Other Projects
 
 ### go_my_go
 
